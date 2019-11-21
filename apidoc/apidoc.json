@@ -1,0 +1,12 @@
+{
+    "name": "接口文档",
+    "version": "1.0.0",
+    "description": "接口文档",
+    "title": "接口文档",
+    "url" : "http://192.168.50.179:280/api",
+    "sampleUrl": "http://192.168.50.179:280/api",
+    "template": {
+        "withCompare": true,
+        "withGenerator": true
+    }
+}
