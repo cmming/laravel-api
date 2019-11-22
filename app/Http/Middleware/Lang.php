@@ -19,7 +19,7 @@ class Lang
     public function handle($request, Closure $next)
     {
         // 强制返回json 数据
-        $request->headers->set('accept', 'application/json');
+//        $request->headers->set('accept', 'application/json');
         //判断系统语言
         if (\Request::header('lang')&&\Request::header('lang')=='en') {
             \App::setLocale('en');

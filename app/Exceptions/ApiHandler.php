@@ -11,6 +11,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Dingo\Api\Exception\Handler as DingoHandler;
+use Illuminate\Auth\AuthenticationException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use App\Exceptions\ErrorMessage;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -56,6 +57,10 @@ class ApiHandler extends DingoHandler
             if ($exception->getMessage() === 'Token could not be parsed from the request.') {
                 return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_NOT_PROVIDED),401);
             }
+        }
+        // passport 异常
+        if ($exception instanceof AuthenticationException) {
+            return response()->json(ErrorMessage::getMessage(ErrorMessage::PASSPORT_ERROR),401);
         }
 
         return parent::handle($exception);

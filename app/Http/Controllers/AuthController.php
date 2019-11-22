@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ErrorMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +39,7 @@ class AuthController extends Controller
         $credentials = request(['name', 'password']);
 
         if (! $token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(ErrorMessage::getMessage(ErrorMessage::PASSWORD_OR_NAME_ERROR), 400);
         }
 
         return $this->respondWithToken($token);

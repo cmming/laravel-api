@@ -4,7 +4,7 @@
  * @api {post} /auth/login 登录
  * @apiVersion 1.0.0
  * @apiName login
- * @apiGroup auth
+ * @apiGroup jwt
  * @apiPermission none
  * @apiDescription  登录
  *
@@ -45,7 +45,7 @@ function login() { return; }
  * @apiHeader Authorization token用户令牌
  * @apiVersion 1.0.0
  * @apiName me
- * @apiGroup auth
+ * @apiGroup jwt
  * @apiPermission jwt_auth
  * @apiDescription  获取自己信息
  *
@@ -82,7 +82,7 @@ function me() { return; }
  * @apiHeader Authorization token用户令牌
  * @apiVersion 1.0.0
  * @apiName refresh
- * @apiGroup auth
+ * @apiGroup jwt
  * @apiPermission jwt_auth
  * @apiDescription  获取自己信息
  *
@@ -111,7 +111,7 @@ function refresh() { return; }
  * @apiHeader Authorization token用户令牌
  * @apiVersion 1.0.0
  * @apiName logout
- * @apiGroup auth
+ * @apiGroup jwt
  * @apiPermission jwt_auth
  * @apiDescription  退出登录
  *
@@ -130,7 +130,7 @@ function logout() { return; }
  * @api {post} /auth/register 用户注册
  * @apiVersion 1.0.0
  * @apiName register
- * @apiGroup auth
+ * @apiGroup jwt
  * @apiDescription  注册
  * @apiParam {String} email  邮箱（唯一）
  * @apiParam {String} name  名称
@@ -152,7 +152,7 @@ function register() { return; }
  * @api {post} /auth/restPwd 重置密码（通过邮箱验证码）
  * @apiVersion 1.0.0
  * @apiName resetPwd
- * @apiGroup auth
+ * @apiGroup jwt
  * @apiDescription  重置密码（通过邮箱验证码）
  * @apiParam {String} email  邮箱（唯一）
  * @apiParam {String} password  密码
@@ -175,7 +175,7 @@ function resetPwd() { return; }
  * @apiHeader Authorization token用户令牌
  * @apiVersion 1.0.0
  * @apiName restPwdByOldPwd
- * @apiGroup auth
+ * @apiGroup jwt
  * @apiDescription  重置密码（通过旧密码）
  * @apiParam {String} password  密码
  * @apiParam {String} newPassword  新密码

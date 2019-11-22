@@ -7,3 +7,11 @@
  *
  * @apiVersion 1.0.0
  */
+
+
+/**
+ * @apiDefine passport_auth 用户登录 auth2.0
+ * 用户必须登录才能操作 （请求中 Authorization:Bearer token）
+ *
+ * @apiVersion 1.0.0
+ */

@@ -23,6 +23,7 @@ $api = app('Dingo\Api\Routing\Router');
 //一分钟最多访问 20 次
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers',
+    'middleware' => 'jwt-auth'
 ],function ($api) {
     // 登录
     $api->group(['prefix' => 'auth'], function ($api) {
@@ -46,6 +47,45 @@ $api->version('v1', [
         $api->post('sendMailToRegister', ['uses' => 'Tool\MailController@sendMailToRegister', 'description' => "注册时邮箱验证码"]);
         $api->post('resetPwd', ['uses' => 'Tool\MailController@resetPwd', 'description' => "注册时邮箱验证码"]);
     });
+
+
+    //管理用户
+    $api->group(['prefix' => 'user'], function ($api) {
+        //管理员列表
+        $api->get('', ['uses' => 'User\IndexController@index', 'description' => "获取管理员信息"]);
+        $api->get('/export', ['uses' => 'User\IndexController@export', 'description' => "导出管理员列表"]);
+        //管理员信息
+        $api->get('/{userid}', ['uses' => 'User\IndexController@show', 'description' => "获取管理员详情"]);
+        //添加用户
+        $api->post('', ['uses' => 'User\IndexController@store', 'description' => "添加管理员"]);
+        //修改用户信息
+        $api->put('/{userid}', ['uses' => 'User\IndexController@update', 'description' => "修改管理员信息"]);
+        //删除用户
+        $api->delete('/{userid}', ['uses' => 'User\IndexController@delete', 'description' => "删除管理员"]);
+
+        //测试redis 使用
+        $api->post('pushInstructions.do', ['uses' => 'User\IndexController@setInstructions', 'description' => "从redis设置数据"]);
+        $api->get('pullInstructions.do', ['uses' => 'User\IndexController@getInstructions', 'description' => "从redis读取数据"]);
+
+    });
 });
 
+
+$api->version('v1', [
+    'namespace' => 'App\Http\Controllers',
+    'middleware' => 'passport-auth'
+],function ($api) {
+    // 登录
+    $api->group(['prefix' => 'passport'], function ($api) {
+
+        $api->post('login', ['uses' => 'PasssportController@login', 'description' => "用户登陆"]);
+        $api->post('refresh', 'PasssportController@refresh');
+
+        $api->group(['middleware' => ['auth:api']], function ($api) {
+            $api->post('logout', 'PasssportController@logout');
+            $api->post('me', 'PasssportController@me');
+        });
+    });
+
+});
 

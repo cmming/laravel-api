@@ -2,45 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38a66ea-662b-4dfe-8567-dce18d9f6898" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/apidoc/apidoc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apidoc/src/_error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apidoc/src/_premission.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apidoc/src/jwt.1.0.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apidoc/src/mail.1.0.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Exceptions/ApiHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Exceptions/ErrorMessage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Tool/MailController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/User/IndexController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/User/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Lang.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Jobs/ElasticSearchLog.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Jobs/SendRegisterOrResetPwdEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Mail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/DingoServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/en/message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/zh/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/zh/message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/zh/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/zh/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/zh/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/zh/validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mail/activemail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mail/emailCode.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mail/resetPwd.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mail/resetPwdMail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apidoc/src/passport.1.0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Transformers/UserTransformer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/passport.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/laravel-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apidoc/src/_premission.js" beforeDir="false" afterPath="$PROJECT_DIR$/apidoc/src/_premission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apidoc/src/jwt.1.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/apidoc/src/jwt.1.0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/ApiHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/ApiHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/ErrorMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/ErrorMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/DingoServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/DingoServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/message.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/zh/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/zh/message.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -162,6 +154,21 @@
       <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
       <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-cors" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1TsMJTFteRSSW9wjl3FOcLNsEHH" />
@@ -169,7 +176,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apidoc/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-test-passport" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -182,10 +189,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\php\laravel-api\apidoc\src" />
+      <recent name="F:\php\laravel-api\config" />
       <recent name="F:\php\laravel-api\app\Models" />
       <recent name="F:\php\laravel-api\app\Http\Controllers" />
       <recent name="F:\php\laravel-api\app\Jobs" />
-      <recent name="F:\php\laravel-api\resources\views" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -232,7 +239,8 @@
       <option name="presentableId" value="Default" />
       <updated>1574244277413</updated>
       <workItem from="1574244278665" duration="3455000" />
-      <workItem from="1574303933733" duration="24336000" />
+      <workItem from="1574303933733" duration="24585000" />
+      <workItem from="1574385313432" duration="26078000" />
     </task>
     <servers />
   </component>
@@ -244,7 +252,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

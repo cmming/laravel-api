@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ErrorMessage;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -94,5 +95,9 @@ class Controller extends BaseController
         }
         return $result;
 
+    }
+
+    public function success () {
+        return response()->json(ErrorMessage::getMessage(ErrorMessage::OK));
     }
 }
