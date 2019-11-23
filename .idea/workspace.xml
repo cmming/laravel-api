@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d38a66ea-662b-4dfe-8567-dce18d9f6898" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/apidoc/src/passport.1.0.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Transformers/UserTransformer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/passport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apidoc/src/_premission.js" beforeDir="false" afterPath="$PROJECT_DIR$/apidoc/src/_premission.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apidoc/src/jwt.1.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/apidoc/src/jwt.1.0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/ApiHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/ApiHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/ErrorMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/ErrorMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/DingoServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/DingoServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docs/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/zh/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/zh/message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="d38a66ea-662b-4dfe-8567-dce18d9f6898" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +208,7 @@
       <updated>1574244277413</updated>
       <workItem from="1574244278665" duration="3455000" />
       <workItem from="1574303933733" duration="24585000" />
-      <workItem from="1574385313432" duration="26078000" />
+      <workItem from="1574385313432" duration="26679000" />
     </task>
     <servers />
   </component>
