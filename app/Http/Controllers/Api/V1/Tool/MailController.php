@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Tool;
+namespace App\Http\Controllers\Api\V1\Tool;
 
 use App\Jobs\SendRegisterOrResetPwdEmail;
 use Illuminate\Http\Request;

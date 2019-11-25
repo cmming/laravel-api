@@ -22,7 +22,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 //一分钟最多访问 20 次
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers',
+    'namespace' => 'App\Http\Controllers\Api\V1',
     'middleware' => 'jwt-auth'
 ],function ($api) {
     // 登录
@@ -72,7 +72,7 @@ $api->version('v1', [
 
 
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers',
+    'namespace' => 'App\Http\Controllers\Api\V1',
     'middleware' => 'passport-auth'
 ],function ($api) {
     // 登录
