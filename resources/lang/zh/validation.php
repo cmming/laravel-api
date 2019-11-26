@@ -110,6 +110,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'captcha'               => '验证码',
+    ],
+
+    'captcha'                  => ':attribute 不正确。',
 
 ];

@@ -24,12 +24,13 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api\V1',
     'middleware' => 'jwt-auth'
-],function ($api) {
+], function ($api) {
     // 登录
     $api->group(['prefix' => 'auth'], function ($api) {
 
         $api->post('register', ['uses' => 'User\RegisterController@register', 'description' => "用户注册"])->name('register');
         $api->post('restPwd', ['uses' => 'User\RegisterController@resetPwd', 'description' => "重置密码"])->name('resetPwd');
+        $api->get('captcha.jpg', ['uses' => 'User\IndexController@captcha', 'description' => "获取验证码"]);
 
         $api->post('login', ['uses' => 'AuthController@login', 'description' => "用户登陆"]);
 
@@ -38,11 +39,12 @@ $api->version('v1', [
             $api->post('refresh', 'AuthController@refresh');
             $api->post('me', 'AuthController@me');
             $api->post('restPwdByOldPwd', 'User\IndexController@resetPwd');
+            $api->post('authorization/user/info', ['uses' => 'AuthController@info', 'description' => "用户信息"]);
         });
     });
 
     // 限速 一分钟内只能发送1次请求
-    $api->group(['prefix' => 'mail','middleware' => 'api.throttle', 'limit' => 1, 'expires' => 1], function ($api) {
+    $api->group(['prefix' => 'mail', 'middleware' => 'api.throttle', 'limit' => 1, 'expires' => 1], function ($api) {
         //发送 注册或者重置密码 邮件 验证码
         $api->post('sendMailToRegister', ['uses' => 'Tool\MailController@sendMailToRegister', 'description' => "注册时邮箱验证码"]);
         $api->post('resetPwd', ['uses' => 'Tool\MailController@resetPwd', 'description' => "注册时邮箱验证码"]);
@@ -68,13 +70,42 @@ $api->version('v1', [
         $api->get('pullInstructions.do', ['uses' => 'User\IndexController@getInstructions', 'description' => "从redis读取数据"]);
 
     });
+
+
+    //角色管理
+    $api->group(['prefix' => 'role'], function ($api) {
+        $api->get('', ['uses' => 'Role\IndexController@index', 'description' => "获取角色列表"]);
+        $api->post('', ['uses' => 'Role\IndexController@store', 'description' => "添加一个角色"]);
+        $api->get('/{roleId}', ['uses' => 'Role\IndexController@show', 'description' => "获取一个角色详情"]);
+        $api->put('/{roleId}', ['uses' => 'Role\IndexController@update', 'description' => "更新一个角色信息"]);
+        $api->delete('/{roleId}', ['uses' => 'Role\IndexController@delete', 'description' => "删除一个角色"]);
+        $api->get('/routers/{roleId}', ['uses' => 'Role\IndexController@routers', 'description' => "获取路由的router"]);
+        $api->put('/routers/{roleId}', ['uses' => 'Role\IndexController@storeRouter', 'description' => "修改一个角色拥有的路由"]);
+    });
+
+
+
+    //router 管理
+    $api->group(['prefix' => 'router'], function ($api) {
+        //管理员列表
+        $api->get('', ['uses' => 'Router\IndexController@index', 'description' => "获取Router信息"]);
+        //管理员信息
+        $api->get('/{id}', ['uses' => 'Router\IndexController@show', 'description' => "获取Router详情"]);
+        //添加用户
+        $api->post('', ['uses' => 'Router\IndexController@store', 'description' => "添加Router"]);
+        //修改用户信息
+        $api->put('/{id}', ['uses' => 'Router\IndexController@update', 'description' => "修改Router信息"]);
+        //删除用户
+        $api->delete('', ['uses' => 'Router\IndexController@destroy', 'description' => "删除管理员"]);
+    });
+
 });
 
 
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api\V1',
     'middleware' => 'passport-auth'
-],function ($api) {
+], function ($api) {
     // 登录
     $api->group(['prefix' => 'passport'], function ($api) {
 
