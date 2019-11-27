@@ -99,6 +99,14 @@ $api->version('v1', [
         $api->delete('', ['uses' => 'Router\IndexController@destroy', 'description' => "删除管理员"]);
     });
 
+    //日志管理
+    $api->group(['prefix' => 'log'], function ($api) {
+        $api->get('', ['uses' => 'Log\IndexController@index', 'description' => "获取日志列表"]);
+        $api->get('/export', ['uses' => 'Log\IndexController@export', 'description' => "导出日志列表"]);
+        //删除用户
+        $api->delete('/{id}', ['uses' => 'Log\IndexController@delete', 'description' => "删除日志"]);
+    });
+
 });
 
 

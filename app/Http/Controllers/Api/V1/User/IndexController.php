@@ -25,9 +25,10 @@ class IndexController extends Controller
         $this->role = $role;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->user->paginate();
+//        $users = $this->user->paginate();
+        $users = $this->user->filter($request->all())-> paginate();
 
         return $this->response->paginator($users, new UserTransformer());
     }

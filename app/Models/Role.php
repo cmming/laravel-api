@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+    use Filterable;
     //
     protected $table = 'roles';
 

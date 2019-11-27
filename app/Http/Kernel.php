@@ -21,6 +21,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Barryvdh\Cors\HandleCors::class,
         \App\Http\Middleware\Lang::class,
+//        \App\Http\Middleware\ElasticSearchLog::class,
+        \App\Http\Middleware\OperationLog::class
     ];
 
     /**

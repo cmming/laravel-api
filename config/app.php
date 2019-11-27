@@ -178,6 +178,8 @@ return [
         App\Providers\DingoServiceProvider::class,
 
         \Mews\Captcha\CaptchaServiceProvider::class,
+
+//        App\Providers\ElasticSearchClientProvider::class,
     ],
 
     /*

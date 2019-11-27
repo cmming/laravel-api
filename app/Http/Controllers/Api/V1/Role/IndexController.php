@@ -23,11 +23,12 @@ class IndexController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->role->paginate();
+//        $roles = $this->role->paginate();
 
-        return $this->response->paginator($users, new RoleTransformer());
+        $roles = $this->role->filter($request->all())->paginate();
+        return $this->response->paginator($roles, new RoleTransformer());
     }
 
 

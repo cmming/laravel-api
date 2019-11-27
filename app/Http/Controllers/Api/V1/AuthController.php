@@ -219,6 +219,11 @@ class AuthController extends Controller
                         "component" => 'moudles/systemManager/views/role.form',
                         "name" => 'updateRole',
                         "meta" => ["title" => 'updateRole', "icon" => 'dashboard', "type" => "menu", "hidden" => true, "model" => 'systemManager']
+                    ],[
+                        "path" => 'log',
+                        "component" => 'moudles/systemManager/views/operationLog',
+                        "name" => 'operationLog',
+                        "meta" => ["title" => 'operationLog', "icon" => 'dashboard', "type" => "menu", "hidden" => false, "model" => 'systemManager']
                     ]]
                 ],
             ],
