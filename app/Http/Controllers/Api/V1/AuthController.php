@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Events\LoginRemind;
 use App\Exceptions\ErrorMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -232,7 +233,7 @@ class AuthController extends Controller
             "info" => auth()->user()
         ];
 
-//        event(new LoginRemind(auth()->user()));
+        event(new LoginRemind(auth()->user()));
         return $result;
     }
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api\V1\User;
 
+use App\Events\LoginRemind;
 use App\Exports\UsersExport;
+use App\Http\Requests\StoreUser;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,6 +31,7 @@ class IndexController extends Controller
     {
 //        $users = $this->user->paginate();
         $users = $this->user->filter($request->all())-> paginate();
+        event(new LoginRemind(auth()->user()));
 
         return $this->response->paginator($users, new UserTransformer());
     }
@@ -46,17 +49,8 @@ class IndexController extends Controller
         return $this->response->item($user, new UserTransformer());
     }
 
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
-        $validator = \Validator::make(request()->all(), [
-            'email' => 'email|unique:users,email',
-            'name' => 'required|string||unique:users,name',
-            'password' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return $this->errorBadRequest($validator);
-        }
-
         $newUser = [
             'email' => $request->input('email'),
             'name' => $request->input('name'),
@@ -90,8 +84,8 @@ class IndexController extends Controller
 
         $credentials = ['email' => $user['email'], 'password' => $request->get('password')];
 
-        if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['errors' => [["field" => "password", 'code' => '密码错误']]], 422);
+        if (!$token = auth('api')->attempt($credentials)) {
+            return response()->json(['errors' => ["password" => ["密码错误"]]], 422);
         }
 
         auth()->user()->update(['password' => bcrypt($request->input('newPassword'))]);
@@ -105,7 +99,7 @@ class IndexController extends Controller
     {
         $validator = \Validator::make(request()->all() + ['id' => $id], [
             'id' => 'required|exists:users,id',
-            'name' => 'required|string'
+            'name' => 'required|max:255|unique:users,name'
         ]);
         if ($validator->fails()) {
             return $this->errorBadRequest($validator);

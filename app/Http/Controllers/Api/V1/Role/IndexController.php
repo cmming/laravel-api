@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Role;
 
+use App\Http\Requests\StoreRole;
 use App\Models\Router;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -45,20 +46,9 @@ class IndexController extends Controller
         return $this->response->item($user, new RoleTransformer());
     }
 
-    public function store(Request $request)
+    public function store(StoreRole $request)
     {
-        $validator = \Validator::make(request()->all(), [
-            'name' => 'required|string',
-            'description' => 'required|string',
-        ]);
-        if ($validator->fails()) {
-            return $this->errorBadRequest($validator);
-        }
-
-        $newRoles = [
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-        ];
+        $newRoles = $request->validated();
 
         $role = $this->role->create($newRoles);
 
@@ -66,12 +56,10 @@ class IndexController extends Controller
     }
 
 
-    public function update($id, Request $request)
+    public function update($id, StoreRole $request)
     {
         $validator = \Validator::make(request()->all() + ['id' => $id], [
             'id' => 'required|exists:roles,id',
-            'name' => 'required|string',
-            'description' => 'required|string',
         ]);
         if ($validator->fails()) {
             return $this->errorBadRequest($validator);

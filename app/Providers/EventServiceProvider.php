@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Listeners\PruneOldTokens;
 use App\Listeners\RevokeOldTokens;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use Laravel\Passport\Events\AccessTokenCreated;
+use Laravel\Passport\Events\RefreshTokenCreated;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -21,9 +23,12 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         // 监听token生产 清空历史的数据
-        AccessTokenCreated::class=>[
+        AccessTokenCreated::class => [
             RevokeOldTokens::class,
         ],
+        RefreshTokenCreated::class => [
+            PruneOldTokens::class
+        ]
     ];
 
     /**

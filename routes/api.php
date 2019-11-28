@@ -33,10 +33,10 @@ $api->version('v1', [
         $api->get('captcha.jpg', ['uses' => 'User\IndexController@captcha', 'description' => "获取验证码"]);
 
         $api->post('login', ['uses' => 'AuthController@login', 'description' => "用户登陆"]);
+        $api->post('refresh', 'AuthController@refresh');
 
         $api->group(['middleware' => ['jwt.auth']], function ($api) {
             $api->post('logout', 'AuthController@logout');
-            $api->post('refresh', 'AuthController@refresh');
             $api->post('me', 'AuthController@me');
             $api->post('restPwdByOldPwd', 'User\IndexController@resetPwd');
             $api->post('authorization/user/info', ['uses' => 'AuthController@info', 'description' => "用户信息"]);

@@ -41,10 +41,7 @@ class Controller extends BaseController
         if ($messages) {
             foreach ($messages as $field => $errors) {
                 foreach ($errors as $error) {
-                    $result[] = [
-                        'field' => $field,
-                        'code' => $error,
-                    ];
+                    $result[$field][] = $error;
                 }
             }
             //打印所有的验证错误日志
