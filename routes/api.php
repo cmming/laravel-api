@@ -107,6 +107,14 @@ $api->version('v1', [
         $api->delete('/{id}', ['uses' => 'Log\IndexController@delete', 'description' => "删除日志"]);
     });
 
+
+    //文件管理
+    $api->group(['prefix' => 'file'], function ($api) {
+        $api->get('/curentFile', ['uses' => 'File\IndexController@index', 'description' => "获取指定文件路径的结构"]);
+        $api->post('/uploadCompanyImg', ['uses' => 'File\IndexController@uploadCompanyImg', 'description' => "上传图片"]);
+        $api->post('/chunk', ['uses' => 'File\IndexController@chunk', 'description' => "文件分片上传"]);
+    });
+
 });
 
 

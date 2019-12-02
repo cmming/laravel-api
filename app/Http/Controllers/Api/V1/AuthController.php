@@ -230,7 +230,8 @@ class AuthController extends Controller
             ],
             "indexPage" => "/admin/dashborad/index",
 //            "routerList" => $testRouterList,
-            "info" => auth()->user()
+            "info" => auth()->user(),
+            'test'=>'test'
         ];
 
         event(new LoginRemind(auth()->user()));

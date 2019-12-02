@@ -31,7 +31,6 @@ class IndexController extends Controller
     {
 //        $users = $this->user->paginate();
         $users = $this->user->filter($request->all())-> paginate();
-        event(new LoginRemind(auth()->user()));
 
         return $this->response->paginator($users, new UserTransformer());
     }
