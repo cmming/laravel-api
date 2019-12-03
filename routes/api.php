@@ -113,6 +113,10 @@ $api->version('v1', [
         $api->get('/curentFile', ['uses' => 'File\IndexController@index', 'description' => "获取指定文件路径的结构"]);
         $api->post('/uploadCompanyImg', ['uses' => 'File\IndexController@uploadCompanyImg', 'description' => "上传图片"]);
         $api->post('/chunk', ['uses' => 'File\IndexController@chunk', 'description' => "文件分片上传"]);
+
+        //测试redis 使用
+        $api->get('set', ['uses' => 'User\IndexController@setInstructions', 'description' => "从redis设置数据"]);
+        $api->get('get', ['uses' => 'User\IndexController@getInstructions', 'description' => "从redis读取数据"]);
     });
 
 });

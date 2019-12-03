@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1\File;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 
@@ -184,5 +185,19 @@ class IndexController extends Controller
             $result = ['message' => '文件已存在！', 'status' => 'error'];
         }
         return $result;
+    }
+
+
+    public function setInstructions(Request $request)
+    {
+        $instructions = $request->get('instructions');
+        \Log::info($instructions);
+        Redis::set('name', $instructions);
+        return ['status'=>'ok'];
+    }
+
+    public function getInstructions()
+    {
+        return Redis::get('name');
     }
 }
