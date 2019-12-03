@@ -71,11 +71,11 @@ class IndexController extends Controller
             }
 
             // 拼接文件名称
-            $filename = date('Ymd') . '/' . date('His'). uniqid() . '.' . $ext;
-            $bool = \Storage::disk('upload_company_img')->put($filename, file_get_contents($request->file('file')));
+            $filename = date('Ymd') . '/' . date('His') . uniqid() . '.' . $ext;
+            $bool = \Storage::disk('upload_file')->put($filename, file_get_contents($request->file('file')));
 
             if ($bool) {
-                $url = \Storage::disk('upload_company_img')->url($filename);
+                $url = \Storage::disk('upload_file')->url($filename);
                 return array('url' => $url);
             } else {
                 return array('error' => '上传失败');
@@ -97,8 +97,10 @@ class IndexController extends Controller
 //            return $this->errorBadRequest($validator);
 //        }
 
+        //
         if ($request->input('phase') === 'start') {
-            return $this->startChunk();
+            $fileName = $request->input('name');
+            return $this->startChunk($request);
         }
 
         if ($request->input('phase') === 'upload') {
@@ -112,15 +114,20 @@ class IndexController extends Controller
     }
 
 
-    private function startChunk()
+    private function startChunk($request)
     {
-        $result = [
-            'data' => [
-                'end_offset' => 1024 * 1024 * 0.5,
-                'session_id' => Uuid::uuid4()->toString(),
-            ],
-            "status" => "success"
-        ];
+        $save_file = $request->get('name');
+        if (!\Storage::disk('upload_file')->exists($save_file)) {
+            $result = [
+                'data' => [
+                    'end_offset' => intval(env('FILE_CHUNCK_SIZE')),
+                    'session_id' => Uuid::uuid4()->toString(),
+                ],
+                "status" => "success"
+            ];
+        }else{
+            $result = ['message' => '文件已存在！', 'status' => 'error'];
+        }
 
         return response()->json($result);
     }
@@ -128,8 +135,8 @@ class IndexController extends Controller
     private function uploadChunk($request)
     {
         // 文件上传
-        $filename = $request->get('session_id') . '/' . $request->get('start_offset');
-        $bool = \Storage::disk('upload_company_img')->put($filename, file_get_contents($request->file('chunk')->getRealPath()));
+        $filename = 'tmp/' . $request->get('session_id') . '/' . $request->get('chunks');
+        $bool = \Storage::disk('upload_file')->put($filename, file_get_contents($request->file('chunk')->getRealPath()));
         if ($bool) {
             return response()->json(["status" => "success"]);
         }
@@ -137,16 +144,45 @@ class IndexController extends Controller
 
     private function finishChunk($request)
     {
-        $filePath = Storage::files( storage_path('upload_company_img').$request->get('session_id'));
+        @set_time_limit(5 * 60);
+        ini_set('memory_limit', -1);
+        $result = [];
 
-        \Log::info($filePath);
-//        foreach ($list as $value) {
-//            if (!empty($value)) {
-//                $handle = fopen($value, "rb");
-//                fwrite($fp, fread($handle, filesize($value)));
-//                fclose($handle);
-//                unset($handle);
-//            }
-//        }
+        $save_file = $request->get('name');
+        $chunks = $request->get('chunks');
+
+        if (!\Storage::disk('upload_file')->exists($save_file)) {
+            //创建最终的文件
+            $isCreate = \Storage::disk('upload_file')->put($save_file, '');
+            $outPath = config('filesystems.disks.upload_file.root') . DIRECTORY_SEPARATOR . $save_file;
+            if (!$out = @fopen($outPath, "wb")) {
+                $result = ['all' => '文件打开失败！', 'message' => 'error'];
+            }
+//
+            if ($isCreate) {
+                $file = config('filesystems.disks.upload_file_tmp.root') . $request->get('session_id');
+
+                if (flock($out, LOCK_EX)) {
+                    for ($index = 0; $index < $chunks; $index++) {
+                        \Log::info("{$file}/{$index}");
+                        $in = \File::get("{$file}/{$index}");
+                        \File::append($outPath, $in);
+                    }
+                    flock($out, LOCK_UN);
+                }
+                @fclose($out);
+
+                $url = \Storage::disk('upload_file')->url($save_file);
+                $result = [
+                    'status' => 'success',
+                    'url' => $url
+                ];
+            } else {
+                $result = ['message' => '文件创建失败！', 'status' => 'error'];
+            }
+        } else {
+            $result = ['message' => '文件已存在！', 'status' => 'error'];
+        }
+        return $result;
     }
 }

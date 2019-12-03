@@ -64,18 +64,18 @@ return [
             'url' => env('AWS_URL'),
         ],
 
-        'upload_company_img' => [
+        'upload_file' => [
             'driver' => 'local',
 //            'url' => env('APP_URL') . 'static/images/',
-            'url' => env('APP_URL').'storage/images/',
+            'url' => env('APP_URL').'storage/uploadFiles/',
+            'root' => storage_path('app/public/uploadFiles/'),
+        ],
 
-            // 文件将上传到storage/app/uploads目录
-            //'root' => storage_path('static/study/situation'),
-
-            // 文件将上传到static/study/situation目录 如果需要浏览器直接访问 请设置成这个
-
-//            'root' => public_path('static/images/'),
-            'root' => storage_path('app/public/images/'),
+        'upload_file_tmp' => [
+            'driver' => 'local',
+//            'url' => env('APP_URL') . 'static/images/',
+            'url' => env('APP_URL').'storage/uploadFiles/tmp/',
+            'root' => storage_path('app/public/uploadFiles/tmp/'),
         ],
 
     ],
