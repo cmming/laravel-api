@@ -1,3 +1,6 @@
+language: php
+php:
+  - 7.3
 addons:
   ssh_known_hosts:
   - chenming.club
@@ -9,3 +12,7 @@ before_install:
 - ls -l ~/.ssh
 - ssh root@chenming.club -o StrictHostKeyChecking=no 'cd /home/laravel-docker/project/project/laravel-api
     && git pull'
+
+branches:
+  only:
+    - master
