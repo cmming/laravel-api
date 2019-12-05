@@ -1,0 +1,9 @@
+addons:
+  ssh_known_hosts:
+  - chenming.club
+before_install:
+  - chmod 600 ~/.ssh/id_rsa_blog
+  - echo -e "Host chenming.club\n\tHostName 47.95.209.77\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/laravel-api" >> ~/.ssh/config
+
+after_success:
+  - ssh root@chenming.club -o StrictHostKeyChecking=no 'cd /home/laravel-docker/project/project/laravel-api && git pull' #使用ssh连接服务器 同时触发服务器进行代码同步
