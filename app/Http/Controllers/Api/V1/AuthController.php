@@ -102,10 +102,9 @@ class AuthController extends Controller
     public function info()
     {
 //        $all_router = \DB::select("SELECT * FROM routers ORDER BY sort DESC");
-//        $all_router = auth()->user()->routers();
-//        array_multisort(array_column($all_router, 'sort'), SORT_DESC, $all_router);
-//        dd($all_router);
-//        $testRouterList = $this->getTree($all_router, 0);
+        $all_router = auth()->user()->routers();
+        array_multisort(array_column($all_router, 'sort'), SORT_DESC, $all_router);
+        $testRouterList = $this->getTree($all_router, 0);
 
         $result = [
             "routerList" => [
@@ -229,7 +228,7 @@ class AuthController extends Controller
                 ],
             ],
             "indexPage" => "/admin/dashborad/index",
-//            "routerList" => $testRouterList,
+            "routerList" => $testRouterList,
             "info" => auth()->user(),
             'test'=>'test'
         ];
