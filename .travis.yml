@@ -5,8 +5,9 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_14f58925b1db_key -iv $encrypted_14f58925b1db_iv
   -in laravel-api.enc -out ~/.ssh/laravel-api -d
 - chmod 600 ~/.ssh/laravel-api
-- echo -e "Host chenming.club\n\tHostName 47.95.209.77\n\tStrictHostKeyChecking no\n\tIdentityFile
-  ~/.ssh/laravel-api" >> ~/.ssh/config
+- echo -e "Host chenming.club\n\tHostName 47.95.209.77\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/laravel-api" >> ~/.ssh/config
+- ls -l ~/.ssh
+- ssh root@chenming.club
 after_success:
 - ssh root@chenming.club -o StrictHostKeyChecking=no 'cd /home/laravel-docker/project/project/laravel-api
   && git pull'
