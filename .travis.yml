@@ -7,7 +7,5 @@ before_install:
 - chmod 600 ~/.ssh/laravel-api
 - echo -e "Host chenming.club\n\tHostName 47.95.209.77\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/laravel-api" >> ~/.ssh/config
 - ls -l ~/.ssh
-- ssh root@chenming.club
-after_success:
 - ssh root@chenming.club -o StrictHostKeyChecking=no 'cd /home/laravel-docker/project/project/laravel-api
-  && git pull'
+    && git pull'
