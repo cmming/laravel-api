@@ -119,6 +119,15 @@ $api->version('v1', [
         $api->get('get', ['uses' => 'User\IndexController@getInstructions', 'description' => "从redis读取数据"]);
     });
 
+    //日志管理
+    $api->group(['prefix' => 'demo'], function ($api) {
+        $api->get('', ['uses' => 'DemoController@index', 'description' => "获取demo列表"]);
+        $api->post('', ['uses' => 'DemoController@store', 'description' => "保存"]);
+        $api->get('/{id}', ['uses' => 'DemoController@show', 'description' => "获取详情"]);
+        $api->put('/{id}', ['uses' => 'DemoController@update', 'description' => "修改信息"]);
+        $api->delete('/{id}', ['uses' => 'DemoController@delete', 'description' => "删除数据"]);
+    });
+
 });
 
 

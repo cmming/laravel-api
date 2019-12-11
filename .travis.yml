@@ -13,6 +13,8 @@ before_install:
 - ssh root@chenming.club -o StrictHostKeyChecking=no 'cd /home/laravel-docker/project/project/laravel-api
     && git pull'
 
+script:
+
 branches:
   only:
     - master
