@@ -36,7 +36,7 @@ class MailController extends Controller
         // 用户注册成功后发送邮件
         dispatch(new SendRegisterOrResetPwdEmail($email, $code,1));
 
-        return $this->response->noContent();
+        return $this->response->noContent()->setStatusCode(200);
     }
 
     public function resetPwd(Request $request)
@@ -54,6 +54,6 @@ class MailController extends Controller
         // 用户注册成功后发送邮件
         dispatch(new SendRegisterOrResetPwdEmail($email, $code,2));
 
-        return $this->response->noContent();
+        return $this->response->noContent()->setStatusCode(200);
     }
 }

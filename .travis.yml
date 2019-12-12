@@ -11,7 +11,7 @@ before_install:
 - echo -e "Host chenming.club\n\tHostName 47.95.209.77\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/laravel-api" >> ~/.ssh/config
 - ls -l ~/.ssh
 - ssh root@chenming.club -o StrictHostKeyChecking=no 'cd /home/laravel-docker/project/project/laravel-api
-    && git pull'
+    && git pull && cd /home/laravel-docker/project/project/laradock && docker-compose exec workspace bash && cd ./laravel-api/ && php artisan migrate'
 
 script:
 
