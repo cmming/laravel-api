@@ -37,7 +37,12 @@ class OperationLog
 //        dd($api_id = \Request::route()->action['description']);
         $log->params = json_encode($input, JSON_UNESCAPED_UNICODE);
         $log->response = json_encode($response, JSON_UNESCAPED_UNICODE);
-        $log->save();   # 记录日志
+//        dd($log->toArray());
+//        $fileName = storage_path('logs/api/' . date('Y-m-d') . '.log');
+//        file_put_contents($fileName, $log->toArray(), FILE_APPEND);
+        \Log::info($log->toArray());
+//        $log->save();   # 记录日志
+
 
         return $response;
     }

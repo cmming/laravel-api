@@ -19,7 +19,7 @@ class CeateTableLog extends Migration
             $table->string('user_id')->comment('操作用户的id');
             $table->string('url')->comment('接口的url');
             $table->string('method')->comment('请求的方法');
-            $table->string('params')->comment('请求的参数');
+            $table->string('params')->default('')->comment('请求的参数');
             $table->string('ip')->default('0.0.0.0')->comment('请求人的');
             $table->string('operation')->default('')->comment('接口注释');
             $table->longText('response')->comment('响应数据');

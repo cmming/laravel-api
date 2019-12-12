@@ -28,7 +28,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         RefreshTokenCreated::class => [
             PruneOldTokens::class
-        ]
+        ],
+'Illuminate\Database\Events\QueryExecuted' => [
+            'App\Listeners\QueryListener',
+        ],
     ];
 
     /**
