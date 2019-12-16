@@ -27,7 +27,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        $all_router = \DB::select("SELECT * FROM routers ORDER BY sort DESC");
+        $all_router = \DB::select("SELECT * FROM routers ORDER BY id ASC, sort DESC");
 
 
         $tree = $this->getTree($all_router, 0);

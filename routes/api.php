@@ -52,7 +52,7 @@ $api->version('v1', [
 
 
     //管理用户
-    $api->group(['prefix' => 'user'], function ($api) {
+    $api->group(['prefix' => 'user', 'middleware' => ['jwt.auth']], function ($api) {
         //管理员列表
         $api->get('', ['uses' => 'User\IndexController@index', 'description' => "获取管理员信息"]);
         $api->get('/export', ['uses' => 'User\IndexController@export', 'description' => "导出管理员列表"]);
@@ -73,7 +73,7 @@ $api->version('v1', [
 
 
     //角色管理
-    $api->group(['prefix' => 'role'], function ($api) {
+    $api->group(['prefix' => 'role', 'middleware' => ['jwt.auth']], function ($api) {
         $api->get('', ['uses' => 'Role\IndexController@index', 'description' => "获取角色列表"]);
         $api->post('', ['uses' => 'Role\IndexController@store', 'description' => "添加一个角色"]);
         $api->get('/{roleId}', ['uses' => 'Role\IndexController@show', 'description' => "获取一个角色详情"]);
@@ -86,7 +86,7 @@ $api->version('v1', [
 
 
     //router 管理
-    $api->group(['prefix' => 'router'], function ($api) {
+    $api->group(['prefix' => 'router', 'middleware' => ['jwt.auth']], function ($api) {
         //管理员列表
         $api->get('', ['uses' => 'Router\IndexController@index', 'description' => "获取Router信息"]);
         //管理员信息
@@ -100,7 +100,7 @@ $api->version('v1', [
     });
 
     //日志管理
-    $api->group(['prefix' => 'log'], function ($api) {
+    $api->group(['prefix' => 'log', 'middleware' => ['jwt.auth']], function ($api) {
         $api->get('', ['uses' => 'Log\IndexController@index', 'description' => "获取日志列表"]);
         $api->get('/export', ['uses' => 'Log\IndexController@export', 'description' => "导出日志列表"]);
         //删除用户
@@ -109,7 +109,7 @@ $api->version('v1', [
 
 
     //文件管理
-    $api->group(['prefix' => 'file'], function ($api) {
+    $api->group(['prefix' => 'file', 'middleware' => ['jwt.auth']], function ($api) {
         $api->get('/curentFile', ['uses' => 'File\IndexController@index', 'description' => "获取指定文件路径的结构"]);
         $api->post('/uploadCompanyImg', ['uses' => 'File\IndexController@uploadCompanyImg', 'description' => "上传图片"]);
         $api->post('/chunk', ['uses' => 'File\IndexController@chunk', 'description' => "文件分片上传"]);
@@ -120,7 +120,7 @@ $api->version('v1', [
     });
 
     //日志管理
-    $api->group(['prefix' => 'demo'], function ($api) {
+    $api->group(['prefix' => 'demo', 'middleware' => ['jwt.auth']], function ($api) {
         $api->get('', ['uses' => 'DemoController@index', 'description' => "获取demo列表"]);
         $api->post('', ['uses' => 'DemoController@store', 'description' => "保存"]);
         $api->get('/{id}', ['uses' => 'DemoController@show', 'description' => "获取详情"]);

@@ -42,7 +42,8 @@ class ErrorMessage
         401002 => "token invalid",
         401003 => "token black list",
         401004 => "token not provided",    #请求头中没有token
-        401005 => "Token has expired and can no longer be refreshed",    #请求头中没有token
+//        401005 => "Token has expired and can no longer be refreshed",    #请求头中没有token (改为更加口语化，用户长时间未操作自动退出)
+        401005 => "The user is permanently inactive, and automatically exits!",    #请求头中没有token (改为更加口语化，用户长时间未操作自动退出)
         401006 => "token error",    #登录失败
         401007 => "token refresh error",    #token 刷新失败
 
