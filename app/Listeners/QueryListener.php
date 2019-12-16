@@ -34,7 +34,7 @@ class QueryListener
             $sql = str_replace("?", "'%s'", $event->sql);
             $log = vsprintf($sql, $event->bindings);
             $connectionName = $event->connectionName;
-            $log = '[' . date('Y-m-d H:i:s') . ',数据库名称：'.$connectionName.'] ' . $log . "\r\n";
+            $log = '[' . date('Y-m-d H:i:s') . ',数据库名称：'.$connectionName.',执行时长：'.$event->time.'ms] ' . $log . "\r\n";
             \Log::info($log);
 //            file_put_contents($fileName, $log, FILE_APPEND);
         }
