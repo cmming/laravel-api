@@ -181,6 +181,8 @@ return [
         \Mews\Captcha\CaptchaServiceProvider::class,
 
 //        App\Providers\ElasticSearchClientProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
+        ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
     ],
 
     /*

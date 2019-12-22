@@ -18,7 +18,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class ElasticSearchLogHandler extends AbstractProcessingHandler
 {
-    protected function write(array $record)
+    protected function write(array $record): void
     {
         try{
 //            dd(JWTAuth::parseToken());

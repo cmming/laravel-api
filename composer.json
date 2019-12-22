@@ -23,6 +23,7 @@
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.8",
         "swooletw/laravel-swoole": "^2.6",
+        "tamayo/laravel-scout-elastic": "^5.0",
         "tucker-eric/eloquentfilter": "^2.1",
         "tymon/jwt-auth": "^1.0.0-rc.5"
     },

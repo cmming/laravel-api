@@ -121,7 +121,7 @@ class IndexController extends Controller
         if (!\Storage::disk('upload_file')->exists($save_file)) {
             $result = [
                 'data' => [
-                    'end_offset' => intval(env('FILE_CHUNCK_SIZE')),
+                    'end_offset' => intval(config('fileupload.fileChunkSize')),
                     'session_id' => Uuid::uuid4()->toString(),
                 ],
                 "status" => "success"

@@ -41,7 +41,7 @@ class OperationLog
 //        $fileName = storage_path('logs/api/' . date('Y-m-d') . '.log');
 //        file_put_contents($fileName, $log->toArray(), FILE_APPEND);
         \Log::info($log->toArray());
-//        $log->save();   # 记录日志
+        $log->save();   # 记录日志
 
 
         return $response;
