@@ -20,8 +20,8 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 //        使用nginx 转发处理跨域
-//        \Barryvdh\Cors\HandleCors::class,
-//        \App\Http\Middleware\Lang::class,
+        \Barryvdh\Cors\HandleCors::class,
+        \App\Http\Middleware\Lang::class,
 //        \App\Http\Middleware\ElasticSearchLog::class,
     // TODO   添加验证 当用户发送很长的请求，会发生错误
         \App\Http\Middleware\OperationLog::class

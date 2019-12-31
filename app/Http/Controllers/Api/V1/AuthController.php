@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Events\LoginRemind;
 use App\Exceptions\ErrorMessage;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
+    use ThrottlesLogins;
     /**
      * Create a new AuthController instance.
      *
@@ -20,35 +23,57 @@ class AuthController extends Controller
 //        $this->middleware('auth:api', ['except' => ['login']]);
     }
 
+    public function username()
+    {
+        return 'name';
+    }
+
     /**
-     * Get a JWT via given credentials.
+     * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
     {
-        $validator = \Validator::make($request->all(), [
-            'name' => 'required',
-            'password' => 'required',
-            'ckey' => 'required',
-            'captcha' => 'required|captcha_api:' . $request->input('ckey')
-        ], [
-        'captcha.required' => '验证码不能为空',
-        'captcha.captcha_api' => '请输入正确的验证码',
-        ]);
 
-        if ($validator->fails()) {
-            // 错误批量处理
-            return $this->errorBadRequest($validator);
+        $this->validateLogin($request);
+
+        if ($this->hasTooManyLoginAttempts($request)) {
+            return $this->sendLockoutResponse($request);
         }
 
         $credentials = request(['name', 'password']);
 
+        $this->incrementLoginAttempts($request);
         if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(ErrorMessage::getMessage(ErrorMessage::PASSWORD_OR_NAME_ERROR), 400);
         }
 
         return $this->respondWithToken($token);
+    }
+
+    public function validateLogin(Request $request){
+        if($request->input('ckey')){
+            $validator = \Validator::make($request->all(), [
+                'name' => 'required',
+                'password' => 'required',
+                'ckey' => 'required',
+                'captcha' => 'required|captcha_api:' . $request->input('ckey')
+            ], [
+                'captcha.required' => '验证码不能为空',
+                'captcha.captcha_api' => '请输入正确的验证码',
+            ]);
+        }else{
+            $validator = \Validator::make($request->all(), [
+                'name' => 'required',
+                'password' => 'required',
+            ]);
+        }
+
+        if ($validator->fails()) {
+            // 错误批量处理
+            return $this->errorBadRequest($validator);
+        }
     }
 
     /**

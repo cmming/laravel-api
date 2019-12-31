@@ -33,25 +33,8 @@ class Controller extends BaseController
         // github like error messages
         // if you don't like this you can use code bellow
         //
-        //throw new ValidationHttpException($validator->errors());
+        throw new ValidationHttpException($validator->errors());
 
-        $result = [];
-        $messages = $validator->errors()->toArray();
-
-        if ($messages) {
-            foreach ($messages as $field => $errors) {
-                foreach ($errors as $error) {
-                    $result[] = [
-                        'field' => $field,
-                        'code' => $error,
-                    ];
-                }
-            }
-            //打印所有的验证错误日志
-            \Log::warning('错误：' . json_encode($result, JSON_UNESCAPED_UNICODE) . '；接收参数为：' . json_encode($_REQUEST, JSON_UNESCAPED_UNICODE));
-        }
-
-        throw new ValidationHttpException($result);
     }
 
     /**
