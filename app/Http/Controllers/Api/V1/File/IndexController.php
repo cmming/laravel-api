@@ -45,7 +45,6 @@ class IndexController extends Controller
 
     public function uploadCompanyImg(Request $request)
     {
-
         $validator = \Validator::make(request()->all(), [
             'file' => 'required|file|max:2048',
         ]);
@@ -81,11 +80,9 @@ class IndexController extends Controller
             } else {
                 return array('error' => '上传失败');
             }
-
         } else {
             return array('error' => '上传失败');
         }
-
     }
 
     public function chunk(Request $request)
@@ -111,7 +108,6 @@ class IndexController extends Controller
         if ($request->input('phase') === 'finish') {
             return $this->finishChunk($request);
         }
-
     }
 
 
@@ -126,7 +122,7 @@ class IndexController extends Controller
                 ],
                 "status" => "success"
             ];
-        }else{
+        } else {
             $result = ['message' => '文件已存在！', 'status' => 'error'];
         }
 

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-
     use ThrottlesLogins;
     /**
      * Create a new AuthController instance.
@@ -35,7 +34,6 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-
         $this->validateLogin($request);
 
         if ($this->hasTooManyLoginAttempts($request)) {
@@ -52,8 +50,9 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function validateLogin(Request $request){
-        if($request->input('ckey')){
+    public function validateLogin(Request $request)
+    {
+        if ($request->input('ckey')) {
             $validator = \Validator::make($request->all(), [
                 'name' => 'required',
                 'password' => 'required',
@@ -63,7 +62,7 @@ class AuthController extends Controller
                 'captcha.required' => '验证码不能为空',
                 'captcha.captcha_api' => '请输入正确的验证码',
             ]);
-        }else{
+        } else {
             $validator = \Validator::make($request->all(), [
                 'name' => 'required',
                 'password' => 'required',
@@ -154,5 +153,4 @@ class AuthController extends Controller
         }
         return $tree;
     }
-
 }

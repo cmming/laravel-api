@@ -24,7 +24,6 @@ class Lang
         if (\Request::header('lang')&&\Request::header('lang')=='en') {
             \App::setLocale('en');
         } else {
-
             \App::setLocale('zh');
         }
         return $next($request);

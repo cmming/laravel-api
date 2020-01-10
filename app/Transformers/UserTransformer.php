@@ -12,7 +12,6 @@ namespace App\Transformers;
 use App\User;
 use League\Fractal\TransformerAbstract;
 
-
 class UserTransformer extends TransformerAbstract
 {
     protected $defaultIncludes = ['roles'];
@@ -36,5 +35,4 @@ class UserTransformer extends TransformerAbstract
         }
         return $this->collection($user->roles, new RoleTransformer());
     }
-
 }

@@ -8,7 +8,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class RouterRel extends Model
@@ -16,5 +15,4 @@ class RouterRel extends Model
     protected $table = 'routers_rel';
 
     protected $guarded = [];
-
 }

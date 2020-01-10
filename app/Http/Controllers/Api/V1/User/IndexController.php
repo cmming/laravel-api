@@ -57,12 +57,12 @@ class IndexController extends Controller
         ];
 
         \DB::beginTransaction();
-        try{
+        try {
             $user = $this->user->create($newUser);
             $this->updateUserRoles($request['roles'], $user);
             \DB::commit();
             return $this->response->created();
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             \DB::rollBack();
             \Log::error('用户创建失败');
             return $this->createError();
@@ -90,8 +90,6 @@ class IndexController extends Controller
         auth()->user()->update(['password' => bcrypt($request->input('newPassword'))]);
 
         return $this->response->noContent();
-
-
     }
 
     public function update($id, Request $request)
@@ -110,13 +108,13 @@ class IndexController extends Controller
         $this->user->find($id)->update($newUser);
 
         \DB::beginTransaction();
-        try{
+        try {
             $curentUser = $this->user->find($id);
             $user = $curentUser->update($newUser);
             $this->updateUserRoles($request['roles'], $curentUser);
             \DB::commit();
             return $this->response->noContent();
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             \DB::rollBack();
             return $this->updateError();
         }
@@ -196,8 +194,6 @@ class IndexController extends Controller
         foreach ($delRoles as $delRole) {
             $user->deleteRoles($delRole);
         }
-
-
     }
 
 
@@ -206,6 +202,4 @@ class IndexController extends Controller
         header('Access-Control-Expose-Headers:Content-Disposition');
         return Excel::download(new UsersExport(), 'usres.xlsx');
     }
-
-
 }

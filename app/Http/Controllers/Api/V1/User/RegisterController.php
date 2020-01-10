@@ -62,12 +62,11 @@ class RegisterController extends Controller
         }
 
 
-        $this->user->where('email','=',$request->input('email'))->update(['password'=>bcrypt($request->input('password'))]);
+        $this->user->where('email', '=', $request->input('email'))->update(['password'=>bcrypt($request->input('password'))]);
 
         //删除 邮箱的验证码
         Mail::where('email', '=', $request->input('email'))->where('send_type', '=', 2)->delete();
 
         return response()->json(['message' => 'Successfully']);
     }
-
 }

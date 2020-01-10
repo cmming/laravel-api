@@ -16,7 +16,7 @@ class Log extends Model
         return 'logs';
     }
 
-// 定义有哪些字段需要搜索
+    // 定义有哪些字段需要搜索
     public function toSearchableArray()
     {
         return [
@@ -37,5 +37,4 @@ class Log extends Model
     protected $table = "logs";
 
     protected $guarded = [];
-
 }

@@ -16,7 +16,6 @@ use Illuminate\Http\Request;
  */
 class IndexController extends Controller
 {
-
     private $router;
 
     public function __construct(Router $router)
@@ -37,16 +36,14 @@ class IndexController extends Controller
 //        $tree = $this->delSonRouter($routers);
 //
         return $tree;
-
     }
 
 
-    private function getTree($data, $pId){
+    private function getTree($data, $pId)
+    {
         $tree = [];
-        foreach($data as $k => $v)
-        {
-            if($v->parent_id == $pId)
-            {         //父亲找到儿子
+        foreach ($data as $k => $v) {
+            if ($v->parent_id == $pId) {         //父亲找到儿子
                 $v->children = $this->getTree($data, $v->id);
                 $tree[] = $v;
             }
@@ -54,13 +51,12 @@ class IndexController extends Controller
         return $tree;
     }
 
-    private function createSonRouter($routers){
-
+    private function createSonRouter($routers)
+    {
     }
 
     private function delSonRouter($routers)
     {
-
         $tree = [];
 
         foreach ($routers as $key => $router) {
@@ -122,7 +118,6 @@ class IndexController extends Controller
             $res = $this->router->find($parent_id)->add_son_router($router);
         } else {
             $router = $this->router->create($data);
-
         }
 
         return $this->response->created();
@@ -164,7 +159,6 @@ class IndexController extends Controller
         }
 
         return $this->response->noContent();
-
     }
 
     public function destroy(Request $request)
@@ -185,8 +179,5 @@ class IndexController extends Controller
         }
 
         return $this->response->noContent();
-
     }
-
-
 }

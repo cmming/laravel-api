@@ -134,6 +134,4 @@ class IndexController extends Controller
 
         return $this->response->noContent();
     }
-
-
 }

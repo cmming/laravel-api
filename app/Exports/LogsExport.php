@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class LogsExport implements FromCollection,ShouldQueue,WithHeadings,ShouldAutoSize
+class LogsExport implements FromCollection, ShouldQueue, WithHeadings, ShouldAutoSize
 {
 //    use Exportable;
     /**

@@ -16,9 +16,9 @@ class CreateDemoTabel extends Migration
         Schema::create('demo', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email');
-            $table->string('radio',10);
-            $table->string('checkbox',255);
-            $table->string('select',255);
+            $table->string('radio', 10);
+            $table->string('checkbox', 255);
+            $table->string('select', 255);
             $table->timestamp('datePicker');
             $table->string('transfer');
             $table->string('autocomplete');

@@ -74,7 +74,8 @@ class PasssportController extends Controller
         return json_decode((string)$response->getBody(), true);
     }
 
-    public function logout(){
+    public function logout()
+    {
         if (\Auth::guard('api')->check()) {
             $access_token = \Auth::guard('api')->user()->token();
             $access_token_id = $access_token->toArray()['id'];

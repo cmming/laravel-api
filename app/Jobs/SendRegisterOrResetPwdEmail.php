@@ -11,7 +11,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 use App\Models\Mail;
 
-
 class SendRegisterOrResetPwdEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -25,7 +24,7 @@ class SendRegisterOrResetPwdEmail implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($email, $code,$type)
+    public function __construct($email, $code, $type)
     {
         //
         $this->email = $email;

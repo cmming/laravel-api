@@ -8,7 +8,6 @@
 
 namespace App\Http\Middleware;
 
-
 use Closure;
 use App\Jobs\ElasticSearchLog as JElasticSearchLog;
 use App\Facades\ElasticSearchClient;

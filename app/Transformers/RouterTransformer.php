@@ -8,7 +8,6 @@
 
 namespace App\Transformers;
 
-
 use League\Fractal\TransformerAbstract;
 use App\Models\Router;
 
@@ -18,6 +17,4 @@ class RouterTransformer extends TransformerAbstract
     {
         return $router->attributesToArray();
     }
-
-
 }

@@ -27,5 +27,3 @@ Broadcast::channel('test-event', function ($user, $id) {
 //    return (int) $user->id === (int) $id;
     return true; //这个里面可以写授权的逻辑判断，我这里直接返回true了，不做验证
 });
-
-

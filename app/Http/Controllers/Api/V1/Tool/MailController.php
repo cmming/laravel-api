@@ -34,7 +34,7 @@ class MailController extends Controller
         //发送重置密码的链接
         $code = $this->randomkeys(8);
         // 用户注册成功后发送邮件
-        dispatch(new SendRegisterOrResetPwdEmail($email, $code,1));
+        dispatch(new SendRegisterOrResetPwdEmail($email, $code, 1));
 
         return $this->response->noContent()->setStatusCode(200);
     }
@@ -52,7 +52,7 @@ class MailController extends Controller
         //发送重置密码的链接
         $code = $this->randomkeys(8);
         // 用户注册成功后发送邮件
-        dispatch(new SendRegisterOrResetPwdEmail($email, $code,2));
+        dispatch(new SendRegisterOrResetPwdEmail($email, $code, 2));
 
         return $this->response->noContent()->setStatusCode(200);
     }

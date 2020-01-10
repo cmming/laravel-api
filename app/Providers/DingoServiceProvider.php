@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Config;
 
 class DingoServiceProvider extends DingoServiceProviders
 {
-
     protected function registerExceptionHandler()
     {
         $this->app->singleton('api.exception', function ($app) {

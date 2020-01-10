@@ -13,7 +13,6 @@ use App\Models\Log;
 
 class LogTransformer extends TransformerAbstract
 {
-
     public function transform(Log $log)
     {
         return [

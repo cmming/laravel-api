@@ -9,13 +9,11 @@
 
 namespace App\Contracts\Foundation;
 
-
 use Elasticsearch\ClientBuilder;
 use App\Contracts\ElasticSearchClient as IElasticSearchClient;
 
 class ElasticSearchClient implements IElasticSearchClient
 {
-
     protected $client;
 
     protected $documents = [];

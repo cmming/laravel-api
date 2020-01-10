@@ -34,27 +34,29 @@ class Controller extends BaseController
         // if you don't like this you can use code bellow
         //
         throw new ValidationHttpException($validator->errors());
-
     }
 
     /**
      * 创建数据失败
      */
-    protected function createError(){
+    protected function createError()
+    {
         return $this->response->error(__("Create error"), 404);
     }
 
     /**
      * 更新数据失败
      */
-    protected function updateError(){
+    protected function updateError()
+    {
         return $this->response->error(__("Update error"), 404);
     }
 
     /**
      * 删除失败
      */
-    protected function deleteError(){
+    protected function deleteError()
+    {
         return $this->response->error(__("Delete error"), 404);
     }
 
@@ -77,10 +79,10 @@ class Controller extends BaseController
             }
         }
         return $result;
-
     }
 
-    public function success () {
+    public function success()
+    {
         return response()->json(ErrorMessage::getMessage(ErrorMessage::OK));
     }
 }

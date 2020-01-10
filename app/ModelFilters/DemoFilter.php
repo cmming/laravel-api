@@ -16,5 +16,4 @@ class DemoFilter extends ModelFilter
     {
         return $this->where('email', 'like', "%$email%");
     }
-
 }

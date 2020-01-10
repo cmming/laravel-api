@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Api\V1\Log;
 
-
 use App\Exports\LogsExport;
 use App\Http\Controllers\Controller;
 use App\Models\Log;
@@ -17,7 +16,6 @@ use Maatwebsite\Excel\Facades\Excel;
  */
 class IndexController extends Controller
 {
-
     private $log;
 
     public function __construct(Log $log)
@@ -33,7 +31,8 @@ class IndexController extends Controller
         return $this->response->paginator($roles, new LogTransformer());
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $this->log->find($id)->delete();
         return $this->response->noContent();
     }

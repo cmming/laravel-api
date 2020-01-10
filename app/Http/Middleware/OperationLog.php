@@ -7,7 +7,6 @@ use JWTAuth;
 use App\Models\Log;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-
 class OperationLog
 {
     /**
@@ -22,10 +21,10 @@ class OperationLog
         $response = $next($request);
         $input = $request->all(); //操作的内容
         $log = new Log(); # 提前创建表、model
-        try{
+        try {
 //            dd(JWTAuth::parseToken());
             $user_id = JWTAuth::parseToken()&&JWTAuth::parseToken()->authenticate()->toArray()['id'];
-        }catch (JWTException $e){
+        } catch (JWTException $e) {
 //            echo $e->getMessage();
             $user_id = -1;
         }

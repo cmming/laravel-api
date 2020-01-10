@@ -8,7 +8,6 @@
 
 namespace App\Exceptions;
 
-
 use Exception;
 use Dingo\Api\Exception\Handler as DingoHandler;
 use Illuminate\Auth\AuthenticationException;
@@ -25,18 +24,18 @@ class ApiHandler extends DingoHandler
             $preException = $exception->getPrevious();
             if ($preException instanceof
                 \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
-                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_EXPIRED),401);
-            } else if ($preException instanceof
+                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_EXPIRED), 401);
+            } elseif ($preException instanceof
                 \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
                 // token 错误
-                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_INVALID),401);
-            } else if ($preException instanceof
+                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_INVALID), 401);
+            } elseif ($preException instanceof
                 \Tymon\JWTAuth\Exceptions\TokenBlacklistedException) {
                 // token 列入黑名单
-                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_BLACKLISTED),401);
+                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_BLACKLISTED), 401);
             }
             if ($exception->getMessage() === 'Token not provided') {
-                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_NOT_PROVIDED),401);
+                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_NOT_PROVIDED), 401);
             }
         }
 
@@ -44,23 +43,23 @@ class ApiHandler extends DingoHandler
         if ($exception instanceof JWTException) {
             if ($exception instanceof
                 \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
-                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_CANT_REFRESHED),401);
-            } else if ($exception instanceof
+                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_CANT_REFRESHED), 401);
+            } elseif ($exception instanceof
                 \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
                 // token 错误
-                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_INVALID),401);
-            } else if ($exception instanceof
+                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_INVALID), 401);
+            } elseif ($exception instanceof
                 \Tymon\JWTAuth\Exceptions\TokenBlacklistedException) {
                 // token 列入黑名单
-                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_BLACKLISTED),401);
+                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_BLACKLISTED), 401);
             }
             if ($exception->getMessage() === 'Token could not be parsed from the request.') {
-                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_NOT_PROVIDED),401);
+                return response()->json(ErrorMessage::getMessage(ErrorMessage::TOKEN_NOT_PROVIDED), 401);
             }
         }
         // passport 异常
         if ($exception instanceof AuthenticationException) {
-            return response()->json(ErrorMessage::getMessage(ErrorMessage::PASSPORT_ERROR),401);
+            return response()->json(ErrorMessage::getMessage(ErrorMessage::PASSPORT_ERROR), 401);
         }
 
         return parent::handle($exception);

@@ -16,5 +16,4 @@ class UserFilter extends ModelFilter
     {
         return $this->where('name', 'like', "%$name%");
     }
-
 }

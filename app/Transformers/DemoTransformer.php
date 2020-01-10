@@ -13,7 +13,6 @@ use League\Fractal\TransformerAbstract;
 
 class DemoTransformer extends TransformerAbstract
 {
-
     public function transform(Demo $demo)
     {
         return $demo->attributesToArray();

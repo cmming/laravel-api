@@ -27,7 +27,6 @@ $api->version('v1', [
 ], function ($api) {
     // 登录
     $api->group(['prefix' => 'auth'], function ($api) {
-
         $api->post('register', ['uses' => 'User\RegisterController@register', 'description' => "用户注册"])->name('register');
         $api->post('restPwd', ['uses' => 'User\RegisterController@resetPwd', 'description' => "重置密码"])->name('resetPwd');
         $api->get('captcha.jpg', ['uses' => 'User\IndexController@captcha', 'description' => "获取验证码"]);
@@ -68,7 +67,6 @@ $api->version('v1', [
         //测试redis 使用
         $api->post('pushInstructions.do', ['uses' => 'User\IndexController@setInstructions', 'description' => "从redis设置数据"]);
         $api->get('pullInstructions.do', ['uses' => 'User\IndexController@getInstructions', 'description' => "从redis读取数据"]);
-
     });
 
 
@@ -127,7 +125,6 @@ $api->version('v1', [
         $api->put('/{id}', ['uses' => 'DemoController@update', 'description' => "修改信息"]);
         $api->delete('/{id}', ['uses' => 'DemoController@delete', 'description' => "删除数据"]);
     });
-
 });
 
 
@@ -137,7 +134,6 @@ $api->version('v1', [
 ], function ($api) {
     // 登录
     $api->group(['prefix' => 'passport'], function ($api) {
-
         $api->post('login', ['uses' => 'PasssportController@login', 'description' => "用户登陆"]);
         $api->post('refresh', 'PasssportController@refresh');
 
@@ -146,6 +142,4 @@ $api->version('v1', [
             $api->post('me', 'PasssportController@me');
         });
     });
-
 });
-

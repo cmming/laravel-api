@@ -8,7 +8,6 @@
 
 namespace App\Exceptions;
 
-
 use Illuminate\Support\Facades\Lang;
 
 class ErrorMessage
@@ -33,7 +32,7 @@ class ErrorMessage
     const UNKNOWN = 404001;
 
 
-    static public $message = [
+    public static $message = [
         2000000 => "ok",
         400001 => "password or name invalid",
         400002 => "user not login",
@@ -54,7 +53,7 @@ class ErrorMessage
     ];
 
 
-    static public function getMessage($code)
+    public static function getMessage($code)
     {
         if (!isset(self::$message[$code])) {
             $code = self::UNKNOWN;
@@ -62,7 +61,5 @@ class ErrorMessage
         $result = ['message' => Lang::get('message.'.self::$message[$code]), 'code' => $code];
 
         return $result;
-
     }
-
 }

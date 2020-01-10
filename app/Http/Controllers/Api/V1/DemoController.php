@@ -18,13 +18,15 @@ class DemoController extends Controller
         $this->demo = $demo;
     }
 
-    public function index (Request $request) {
+    public function index(Request $request)
+    {
         $demos = $this->demo->filter($request->all())->paginate();
 
         return $this->response->paginator($demos, new DemoTransformer());
     }
 
-    public function store (StoreDemo $storeDemo) {
+    public function store(StoreDemo $storeDemo)
+    {
         $newDemo = $storeDemo->validated();
 //        $newDemo['transfer'] = json_encode($newDemo['transfer']);
 //        $newDemo['checkbox'] = json_encode($newDemo['checkbox']);
@@ -34,7 +36,8 @@ class DemoController extends Controller
         return $this->response->created();
     }
 
-    public function show ($id) {
+    public function show($id)
+    {
         $validator = \Validator::make(['id' => $id], [
             'id' => 'required|exists:demo,id',
         ]);
@@ -46,7 +49,8 @@ class DemoController extends Controller
         return $this->response->item($demo, new DemoTransformer());
     }
 
-    public function update ($id, StoreDemo $storeDemo) {
+    public function update($id, StoreDemo $storeDemo)
+    {
         $validator = \Validator::make(['id' => $id], [
             'id' => 'required|exists:demo,id',
         ]);
@@ -61,7 +65,8 @@ class DemoController extends Controller
         return $this->response->noContent();
     }
 
-    public function delete ($id) {
+    public function delete($id)
+    {
         $validator = \Validator::make(['id' => $id], [
             'id' => 'required|exists:demo,id',
         ]);

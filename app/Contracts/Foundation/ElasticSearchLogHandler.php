@@ -8,7 +8,6 @@
 
 namespace App\Contracts\Foundation;
 
-
 use JWTAuth;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
@@ -20,10 +19,10 @@ class ElasticSearchLogHandler extends AbstractProcessingHandler
 {
     protected function write(array $record): void
     {
-        try{
+        try {
 //            dd(JWTAuth::parseToken());
             $user_id = JWTAuth::parseToken()&&JWTAuth::parseToken()->authenticate()->toArray()['id'];
-        }catch (JWTException $e){
+        } catch (JWTException $e) {
 //            echo $e->getMessage();
             $user_id = -1;
         }

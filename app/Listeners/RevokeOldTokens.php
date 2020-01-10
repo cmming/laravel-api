@@ -38,7 +38,7 @@ class RevokeOldTokens
 
         // 同一客户端 和 同一用户生产的token
         $refresh_tokens = DB::table('oauth_refresh_tokens')
-            ->whereIn('access_token_id',array_column($access_token_ids,'id'))
+            ->whereIn('access_token_id', array_column($access_token_ids, 'id'))
 //            ->where('created_at', '<', Carbon::now()->toDateString())
             ->where('revoked', 0)
             ->delete();
