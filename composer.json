@@ -22,6 +22,7 @@
         "mews/captcha": "^3.0",
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.8",
+        "stechstudio/laravel-php-cs-fixer": "^2.0",
         "swooletw/laravel-swoole": "^2.6",
         "tamayo/laravel-scout-elastic": "^5.0",
         "tucker-eric/eloquentfilter": "^2.1",
