@@ -14,3 +14,5 @@ node_modules
 output
 .idea
 .php_cs.cache
+/storage/laravels.json
+/storage/laravels.pid
